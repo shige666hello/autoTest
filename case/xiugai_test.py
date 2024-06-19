@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# @Author  : leizi
+# @Author  : shige
 from bussinses.funnicgong import Xiugai_tes
 from selenium import webdriver
 import unittest,time,os,ddt

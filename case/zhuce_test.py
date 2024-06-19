@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# @Author  : leizi
+# @Author  : shige
 from bussinses.funnicgong import Zhuce_tes
 import unittest,time,os,ddt
 from util import log

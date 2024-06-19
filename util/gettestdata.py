@@ -4,7 +4,7 @@
 @time: 2018/1/19 11:43 
 """
 import xlrd
-from util import  log
+from util import log
 logs=log.log_message()
 def huoqu_test(filepath,index):
     try:
