@@ -9,7 +9,7 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)) + "/..")
 
 from util import log
 from util.gettestdata import huoqu_test
-from bussinses.funnicgong import Login_tes
+from bussiness.funnicgong import Login_tes
 
 path = os.getcwd()
 case_path = os.path.join(path, 'data', 'case.xlsx')
