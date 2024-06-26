@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # @Author  : shige
-from bussiness.funnicgong import Xiugai_tes
+from bussiness.functionPublic import Xiugai_tes
 from selenium import webdriver
 import unittest,time,os,ddt
 from util import log
@@ -16,13 +16,13 @@ class Test_xiugai(unittest.TestCase):
         self.xiugai_fun=Xiugai_tes(self.derve)
     @ddt.data(*casedata)
     def test_xiugai_1(self,casedata):
-        self.password=casedata['yuanmi']
+        self.password=casedata['originalmi']
         self.xiugaimi=casedata['xiugaimi']
         self.xiugaimi1=casedata['xiugaimi1']
         self.suc=casedata['suc']
         self.assert_vale=casedata['assert_vale']
         self.return_data=self.xiugai_fun.xiugai(self.suc,self.password,self.xiugaimi,self.xiugaimi1)
-        self.logs.info_log("input: password:%s,xiugaimima:%s,xiugaimima1:%s,assert:%s"%(self.password,self.xiugaimi,self.xiugaimi1,self.assert_vale))
+        self.logs.info_log("input: password:%s,xiugaipassword:%s,xiugaipassword1:%s,assert:%s"%(self.password,self.xiugaimi,self.xiugaimi1,self.assert_vale))
         time.sleep(1)
         self.assertAlmostEqual(self.return_data,self.assert_vale)
     def tearDown(self):

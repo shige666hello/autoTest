@@ -1,7 +1,7 @@
 """ 
-@author: lileilei
+@author: shige
 @file: ddd.py 
-@time: 2018/1/19 11:43 
+@time: 2024/1/19 11:43 
 """
 import xlrd
 from util import log

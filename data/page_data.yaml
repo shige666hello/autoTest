@@ -1,9 +1,9 @@
 login:
     url: "http://127.0.0.1:8000/"
-    denglu: "请登录"
+    log_in: "请登录"
     name: "firstname"
     password: "inputPassword"
-    denglu_btm: "denglu"
+    log_in_btm: "log_in"
     login_err: "/html/body/form/div[4]/div/h4[2]"
     login_suc: "/html/body/nav/div/div[2]/ul/div/ul/li[3]/a/span"
 zhuce:
@@ -16,7 +16,7 @@ zhuce:
     youxiang: "email" #class
     tijiao_btn: "submit" #class
     zhuce_err: "/html/body/form/div[6]/div/h4" #xpath
-    zhuce_suc: "denglu" #id
+    zhuce_suc: "log_in" #id
 zhaohui:
     url: "http://127.0.0.1:8000/reset_pwd"
     username: 'input[name=\"firstname\"]'
@@ -28,19 +28,19 @@ reset_pwd:
     url: "http://127.0.0.1:8000/ret_passord"
     email: 'input[name=\"email\"]'
     yanzheng: 'input[name=\"yanzhengma\"]'
-    mima: 'input[name=\"inputPassword\"]'
-    chongzhimima: 'input[name=\"inputPassword1\"]'
+    password: 'input[name=\"inputPassword\"]'
+    chongzhipassword: 'input[name=\"inputPassword1\"]'
     reset_btn: 'input[type=\"submit\"]'
     reset_error: "/html/body/form/div[5]/div/h4"
-    reset_suc: "denglu" #id
+    reset_suc: "log_in" #id
 xiugai:
-    url: "http://127.0.0.1:8000/xiugaimima"
-    yuanmi: 'input[type=\"pass_yuan\"]'
+    url: "http://127.0.0.1:8000/xiugaipassword"
+    originalmi: 'input[type=\"pass_original\"]'
     xiugaimi: 'input[type=\"inputPassword\"]'
     xiugaimi1: 'input[type=\"inputPassword1\"]'
     xiugai_but: "修改密码"
     xiu_err: "/html/body/form/div[4]/div/h4"
-    xiu_suc: "denglu"#id
+    xiu_suc: "log_in"#id
 xiebo:
     url: "http://127.0.0.1:8000/xiebo"
     biaoti: 'input[type=\"biaoti1\"]'

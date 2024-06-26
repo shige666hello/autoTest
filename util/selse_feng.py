@@ -6,22 +6,22 @@ from selenium.webdriver.common.action_chains import ActionChains
 class PySele():
 	def __init__(self,brower):#初始化浏览器
 		if brower =='firefox' or brower =='Firefox' or brower =='f' or brower =='F':
-			deriver=webdriver.Firefox()
+			driver=webdriver.Firefox()
 		elif brower =='Ie' or brower =='ie' or brower =='i' or brower=='I':
-			deriver=webdriver.Ie()
+			driver=webdriver.Ie()
 		elif brower =='Chrome' or brower =='chrome' or brower =='Ch' or brower=='ch':
-			deriver=webdriver.Chrome()
+			driver=webdriver.Chrome()
 		elif brower =='PhantomJS' or brower =='phantomjs' or brower =='ph' or brower=='phjs':
-			deriver=webdriver.PhantomJS()
+			driver=webdriver.PhantomJS()
 		elif brower =='Edge' or brower =='edge' or brower =='Ed' or brower=='ed':
-			deriver=webdriver.Edge()
+			driver=webdriver.Edge()
 		elif brower =='Opera' or brower =='opera' or brower =='op' or brower=='OP':
-			deriver=webdriver.Opera()
+			driver=webdriver.Opera()
 		elif brower =='Safari' or brower =='safari' or brower =='sa' or brower=='saf':
-			deriver=webdriver.Safari()
+			driver=webdriver.Safari()
 		else:
 			raise NameError('只能输入firefox,Ie,Chrome,PhantomJS,Edge,Opera,Safari')
-		self.driver=deriver
+		self.driver=driver
 	def element(self,fangfa,dingwei):#定位
 		if fangfa=='id':
 			element=self.driver.find_element_by_id(dingwei)

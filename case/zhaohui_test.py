@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # @Author  : shige
-from bussiness.funnicgong import Zaohui_tes
+from bussiness.functionPublic import Zaohui_tes
 import unittest,time,os,ddt
 from util import log
 from selenium import webdriver

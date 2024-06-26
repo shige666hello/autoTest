@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # @Author  : shige
-from bussiness.funnicgong import Zhuce_tes
+from bussiness.functionPublic import Zhuce_tes
 import unittest,time,os,ddt
 from util import log
 from selenium import webdriver
@@ -17,7 +17,7 @@ class Testzhuce(unittest.TestCase):
     @ddt.data(*casedata)
     def test_zhuce_1(self,casedata):
         self.name=casedata['username']
-        self.password=casedata['mima']
+        self.password=casedata['password']
         self.passwordque=casedata['nima2']
         self.shoujihao=casedata['shoujihao']
         self.youxiang=casedata['youxiang']
