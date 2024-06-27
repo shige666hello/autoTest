@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Markmap</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+}
+#mindmap {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+}
+</style>
+<link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.8.0/styles/default.min.css"><link rel="stylesheet" href="https://unpkg.com/markmap-toolbar@0.17.0/dist/style.css">
+</head>
+<body>
+<svg id="mindmap"></svg>
+<script src="https://unpkg.com/d3@7.8.5/dist/d3.min.js"></script><script src="https://unpkg.com/markmap-view@0.17.0/dist/browser/index.js"></script><script src="https://unpkg.com/markmap-toolbar@0.17.0/dist/index.js"></script><script>(r => {
+                setTimeout(r);
+              })(() => {
+  const {
+    markmap,
+    mm
+  } = window;
+  const {
+    el
+  } = markmap.Toolbar.create(mm);
+  el.setAttribute('style', 'position:absolute;bottom:20px;right:20px');
+  document.body.append(el);
+})</script><script>((getMarkmap, getOptions, root2, jsonOptions) => {
+              const markmap = getMarkmap();
+              window.mm = markmap.Markmap.create(
+                "svg#mindmap",
+                (getOptions || markmap.deriveOptions)(jsonOptions),
+                root2
+              );
+            })(() => window.markmap,null,{"content":"Python + Selenium + HTMLTestRunner 自动化测试","children":[{"content":"环境配置","children":[{"content":"<strong>Python</strong>: 3.x","children":[],"payload":{"lines":"4,5"}},{"content":"<strong>Selenium</strong>: 3.x","children":[],"payload":{"lines":"5,6"}},{"content":"<strong>HTMLTestRunner</strong>: Python 3 版本","children":[],"payload":{"lines":"6,8"}}],"payload":{"lines":"2,3"}},{"content":"框架概述","children":[],"payload":{"lines":"8,9"}},{"content":"目录结构","children":[{"content":"<strong>bussiness</strong>: 公共逻辑模块","children":[],"payload":{"lines":"14,15"}},{"content":"<strong>data</strong>: 测试用例和界面元素定位","children":[],"payload":{"lines":"15,16"}},{"content":"<strong>report</strong>: 测试报告存放目录","children":[],"payload":{"lines":"16,17"}},{"content":"<strong>case</strong>: 测试用例","children":[],"payload":{"lines":"17,18"}},{"content":"<strong>log</strong>: 测试日志","children":[],"payload":{"lines":"18,19"}},{"content":"<strong>resultpang</strong>: 测试截图","children":[],"payload":{"lines":"19,20"}},{"content":"<strong>suite</strong>: 测试用例集","children":[],"payload":{"lines":"20,21"}},{"content":"<strong>util</strong>: 公共模块","children":[],"payload":{"lines":"21,22"}},{"content":"<strong>run.py</strong>: 执行脚本","children":[],"payload":{"lines":"22,24"}}],"payload":{"lines":"12,13"}},{"content":"功能特点","children":[{"content":"公共逻辑模块 (bussiness)","children":[],"payload":{"lines":"26,27"}},{"content":"测试用例管理 (data)","children":[],"payload":{"lines":"30,31"}},{"content":"测试报告 (report)","children":[],"payload":{"lines":"34,35"}},{"content":"测试用例 (case)","children":[],"payload":{"lines":"38,39"}},{"content":"测试日志 (log)","children":[],"payload":{"lines":"42,43"}},{"content":"测试截图 (resultpang)","children":[],"payload":{"lines":"46,47"}},{"content":"测试用例集 (suite)","children":[],"payload":{"lines":"50,51"}},{"content":"公共模块 (util)","children":[],"payload":{"lines":"54,55"}},{"content":"执行脚本 (run.py)","children":[],"payload":{"lines":"58,59"}}],"payload":{"lines":"24,25"}},{"content":"运行说明","children":[{"content":"\n<p data-lines=\"64,65\">安装依赖：</p>\n<pre><code class=\"language-bash\">pip install -r requirements.txt\n</code></pre>","children":[],"payload":{"lines":"64,70"}},{"content":"\n<p data-lines=\"70,71\">配置测试用例和环境：</p>","children":[{"content":"在 <code>data</code> 目录中配置测试用例和界面元素定位。","children":[],"payload":{"lines":"72,73"}},{"content":"修改 <code>run.py</code> 中的相关配置参数。","children":[],"payload":{"lines":"73,75"}}],"payload":{"lines":"70,75"}},{"content":"\n<p data-lines=\"75,76\">执行测试：</p>\n<pre><code class=\"language-bash\">python run.py\n</code></pre>","children":[],"payload":{"lines":"75,81"}},{"content":"\n<p data-lines=\"81,82\">查看测试报告：</p>","children":[{"content":"测试执行完成后，报告将存放在 <code>report</code> 目录中，包含详细的测试结果和分析信息。","children":[],"payload":{"lines":"83,85"}}],"payload":{"lines":"81,85"}}],"payload":{"lines":"62,63"}},{"content":"未来规划","children":[{"content":"增加更多的测试用例覆盖","children":[],"payload":{"lines":"87,88"}},{"content":"优化测试执行效率","children":[],"payload":{"lines":"88,89"}},{"content":"集成持续集成/持续部署 (CI/CD) 工具","children":[],"payload":{"lines":"89,90"}},{"content":"增强报告的可视化和交互性","children":[],"payload":{"lines":"90,91"}}],"payload":{"lines":"85,86"}}],"payload":{"lines":"0,1"}},{})</script>
+</body>
+</html>
