@@ -6,7 +6,7 @@ login:
     log_in_btm: "log_in"
     login_err: "/html/body/form/div[4]/div/h4[2]"
     login_suc: "/html/body/nav/div/div[2]/ul/div/ul/li[3]/a/span"
-zhuce:
+sign_in:
     url: "http://127.0.0.1:8000/"
     zhuc: "注册"
     username: "username"  #class
@@ -15,8 +15,8 @@ zhuce:
     shouji: "shouji" #class
     youxiang: "email" #class
     tijiao_btn: "submit" #class
-    zhuce_err: "/html/body/form/div[6]/div/h4" #xpath
-    zhuce_suc: "log_in" #id
+    sign_in_err: "/html/body/form/div[6]/div/h4" #xpath
+    sign_in_suc: "log_in" #id
 zhaohui:
     url: "http://127.0.0.1:8000/reset_pwd"
     username: 'input[name=\"firstname\"]'

@@ -51,7 +51,7 @@ class Login_tes:
         finally:
             self.driver.quit()
 
-class Zhuce_tes:
+class sign_in_tes:
     def __init__(self, driver):
         self.driver = driver
         self.logs = log.log_message()
@@ -59,7 +59,7 @@ class Zhuce_tes:
 
     def load_data(self):
         with open(os.path.join(path, "data", "page_data.yaml"), "r", encoding="utf-8") as file:
-            self.data = yaml.safe_load(file)['zhuce']
+            self.data = yaml.safe_load(file)['sign_in']
             self.zhu_url = self.data.get('url')
             self.zhu = self.data.get('zhuc')
             self.zhu_user = self.data.get('username')
@@ -68,10 +68,10 @@ class Zhuce_tes:
             self.zhu_shouji = self.data.get('shouji')
             self.zhu_email = self.data.get('youxiang')
             self.zhu_butn = self.data.get('tijiao_btn')
-            self.zhu_suc = self.data.get('zhuce_suc')
-            self.zhu_err = self.data.get('zhuce_err')
+            self.zhu_suc = self.data.get('sign_in_suc')
+            self.zhu_err = self.data.get('sign_in_err')
 
-    def zhuce(self, suc, name, password, password1, shouji, email):
+    def sign_in(self, suc, name, password, password1, shouji, email):
         try:
             self.driver.get(self.zhu_url)
             self.driver.find_element(By.LINK_TEXT, self.zhu).click()
@@ -104,7 +104,7 @@ class Zhuce_tes:
         finally:
             self.driver.quit()
 
-class Zaohui_tes:
+class Retrieve_tes:
     def __init__(self, driver):
         self.driver = driver
         self.logs = log.log_message()
@@ -143,7 +143,7 @@ class Zaohui_tes:
         finally:
             self.driver.quit()
 
-class Rest_tes:
+class Reset_tes:
     def __init__(self, driver):
         self.driver = driver
         self.logs = log.log_message()
@@ -152,8 +152,8 @@ class Rest_tes:
     def load_data(self):
         with open(os.path.join(path, "data", "page_data.yaml"), "r", encoding="utf-8") as file:
             self.data = yaml.safe_load(file)['reset_pwd']
-            self.rest_url = self.data.get('url')
-            self.rest_email = self.data.get('email')
+            self.reset_url = self.data.get('url')
+            self.reset_email = self.data.get('email')
             self.reset_yan = self.data.get('yanzheng')
             self.reset_password = self.data.get('password')
             self.reset_passwordque = self.data.get('chongzhipassword')
@@ -161,11 +161,11 @@ class Rest_tes:
             self.reset_error = self.data.get('reset_error')
             self.reset_suc = self.data.get('reset_suc')
 
-    def rest(self, suc, yan, email, password, chongzhipassword):
+    def reset(self, suc, yan, email, password, chongzhipassword):
         try:
-            self.driver.get(self.rest_url)
-            self.driver.find_element(By.CSS_SELECTOR, self.rest_email).clear()
-            self.driver.find_element(By.CSS_SELECTOR, self.rest_email).send_keys(email)
+            self.driver.get(self.reset_url)
+            self.driver.find_element(By.CSS_SELECTOR, self.reset_email).clear()
+            self.driver.find_element(By.CSS_SELECTOR, self.reset_email).send_keys(email)
             self.driver.find_element(By.CSS_SELECTOR, self.reset_yan).clear()
             self.driver.find_element(By.CSS_SELECTOR, self.reset_yan).send_keys(yan)
             self.driver.find_element(By.CSS_SELECTOR, self.reset_password).clear()
@@ -188,4 +188,5 @@ class Rest_tes:
 
         finally:
             self.driver.quit()
+
 

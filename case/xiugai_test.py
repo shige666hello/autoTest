@@ -4,10 +4,10 @@ from bussiness.functionPublic import Xiugai_tes
 from selenium import webdriver
 import unittest,time,os,ddt
 from util import log
-from util.gettestdata import huoqu_test
+from util.gettestdata import fetch_test_cases
 path=os.getcwd()
 case_path=path+'\\data\\case.xlsx'
-casedata=huoqu_test(case_path,3)
+casedata=fetch_test_cases(case_path,3)
 @ddt.ddt
 class Test_xiugai(unittest.TestCase):
     def setUp(self):

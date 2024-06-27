@@ -8,12 +8,12 @@ import sys
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + "/..")
 
 from util import log
-from util.gettestdata import huoqu_test
+from util.gettestdata import fetch_test_cases
 from bussiness.functionPublic import Login_tes
 
 path = os.getcwd()
 case_path = os.path.join(path, 'data', 'case.xlsx')
-casedata = huoqu_test(case_path, 3)
+casedata = fetch_test_cases(case_path, 3)
 
 @ddt.ddt
 class Testlogin(unittest.TestCase):

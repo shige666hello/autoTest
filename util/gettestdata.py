@@ -6,7 +6,7 @@
 import xlrd
 from util import log
 logs=log.log_message()
-def huoqu_test(filepath,index):
+def fetch_test_cases(filepath,index):
     try:
         file = xlrd.open_workbook(filepath)
         me = file.sheets()[index]

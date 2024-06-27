@@ -1,19 +1,19 @@
 # -*- coding: utf-8 -*-
 # @Author  : shige
-from bussiness.functionPublic import Zaohui_tes
+from bussiness.functionPublic import Retrieve_tes
 import unittest,time,os,ddt
 from util import log
 from selenium import webdriver
-from util.gettestdata import huoqu_test
+from util.gettestdata import fetch_test_cases
 path=os.getcwd()
 case_path=path+'\\data\\case.xlsx'
-casedata=huoqu_test(case_path,2)
+casedata=fetch_test_cases(case_path,2)
 @ddt.ddt
 class Testzhaohui(unittest.TestCase):
     def setUp(self):
         self.logs = log.log_message()
         self.derve=webdriver.Firefox()
-        self.zhaohui_fun=Zaohui_tes(self.derve)
+        self.zhaohui_fun=Retrieve_tes(self.derve)
     @ddt.data(*casedata)
     def test_zhaohui_1(self,casedata):
         self.username=casedata['username']
