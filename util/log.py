@@ -4,7 +4,7 @@ import logging
 
 class LogMessage:
     def __init__(self):
-        self.title = '注册测试'
+        self.title = '测试日志'
         day = time.strftime("%Y%m%d%H", time.localtime(time.time()))
         pad = os.getcwd()
         file_dir = os.path.join(pad, 'logco')

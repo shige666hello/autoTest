@@ -3,12 +3,12 @@ login:
     log_in: "请登录"
     name: "firstname"
     password: "inputPassword"
-    log_in_btm: "log_in"
+    log_in_btn: "log_in"
     login_err: "/html/body/form/div[4]/div/h4[2]"
     login_suc: "/html/body/nav/div/div[2]/ul/div/ul/li[3]/a/span"
 sign_in:
     url: "http://127.0.0.1:8000/"
-    zhuc: "注册"
+    zhuce: "注册"
     username: "username"  #class
     password: "password" #class
     querenpass: "password1" #class
@@ -24,23 +24,14 @@ zhaohui:
     zhaohui_btn: 'input[type=\"submit\"]'
     zhaohui_err: "/html/body/form/div[3]/div/h4" #xpath
     zhaohui_suc: 'input[type=\"submit\"]' #css
-reset_pwd:
-    url: "http://127.0.0.1:8000/ret_passord"
-    email: 'input[name=\"email\"]'
-    yanzheng: 'input[name=\"yanzhengma\"]'
-    password: 'input[name=\"inputPassword\"]'
-    chongzhipassword: 'input[name=\"inputPassword1\"]'
-    reset_btn: 'input[type=\"submit\"]'
-    reset_error: "/html/body/form/div[5]/div/h4"
-    reset_suc: "log_in" #id
-xiugai:
+change_pwd:
     url: "http://127.0.0.1:8000/xiugaipassword"
-    originalmi: 'input[type=\"pass_original\"]'
-    xiugaimi: 'input[type=\"inputPassword\"]'
-    xiugaimi1: 'input[type=\"inputPassword1\"]'
-    xiugai_but: "修改密码"
-    xiu_err: "/html/body/form/div[4]/div/h4"
-    xiu_suc: "log_in"#id
+    current_pwd: 'input[type=\"pass_original\"]'
+    new_pwd: 'input[type=\"inputPassword\"]'
+    confirm_pwd: 'input[type=\"inputPassword1\"]'
+    change_btn: "修改密码"
+    change_err: "/html/body/form/div[4]/div/h4"
+    change_suc: "log_in"#id
 xiebo:
     url: "http://127.0.0.1:8000/xiebo"
     biaoti: 'input[type=\"biaoti1\"]'
@@ -53,3 +44,12 @@ xiebo:
     xiebo_btn: 'input[type=\"submit\"]'
     xiebo_err: "/html/body/div/div/div[1]/div/div[2]/form/h4"
     xiebo_suc: "/html/body/div/div/div[1]/div/div[3]/h4"
+reset_pwd:
+    url: "http://127.0.0.1:8000/ret_passord"
+    email: 'input[name=\"email\"]'
+    yanzheng: 'input[name=\"yanzhengma\"]'
+    password: 'input[name=\"inputPassword\"]'
+    chongzhipassword: 'input[name=\"inputPassword1\"]'
+    reset_btn: 'input[type=\"submit\"]'
+    reset_error: "/html/body/form/div[5]/div/h4"
+    reset_suc: "log_in" #id

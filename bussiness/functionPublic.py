@@ -4,8 +4,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from util import log
-
-path = os.getcwd()
+from util import WebDriverWrapper
 
 class Login_tes:
     def __init__(self, driver):
@@ -14,54 +13,52 @@ class Login_tes:
         self.load_data()
 
     def load_data(self):
+        path = os.getcwd()
         with open(os.path.join(path, "data", "page_data.yaml"), "r", encoding="utf-8") as file:
             self.data = yaml.safe_load(file)['login']
             self.lo_url = self.data.get('url')
             self.log_in = self.data.get('log_in')
             self.username = self.data.get('name')
             self.password = self.data.get('password')
-            self.sub = self.data.get('log_in_btm')
+            self.sub = self.data.get('log_in_btn')
             self.lo_err = self.data.get('login_err')
             self.lo_suc = self.data.get('login_suc')
 
     def login(self, suc, name, password):
         try:
-            self.driver.get(self.lo_url)
-            self.driver.find_element(By.LINK_TEXT, self.log_in).click()
-            WebDriverWait(self.driver, 10).until(
-                EC.visibility_of_element_located((By.ID, self.username)))
-            self.driver.find_element(By.ID, self.username).clear()
-            self.driver.find_element(By.ID, self.username).send_keys(name)
-            self.driver.find_element(By.ID, self.password).click()
-            self.driver.find_element(By.ID, self.password).send_keys(password)
-            self.driver.find_element(By.ID, self.sub).click()
+            wrapper = WebDriverWrapper(self.driver)
+            wrapper.open_url(self.lo_url)
+            wrapper.click_link_text(self.log_in)
+            wrapper.wait_for_element('id', self.username)
+            wrapper.send_keys_to_element('id', self.username, name)
+            wrapper.send_keys_to_element('id', self.password, password)
+            wrapper.click_element('id', self.sub)
 
             if suc == '1':
-                WebDriverWait(self.driver, 10).until(
-                    EC.visibility_of_element_located((By.XPATH, self.lo_suc)))
-                return self.driver.find_element(By.XPATH, self.lo_suc).text
+                wrapper.wait_for_element('xpath', self.lo_suc)
+                return wrapper.get_text('xpath', self.lo_suc)
             elif suc == '0':
-                WebDriverWait(self.driver, 10).until(
-                    EC.visibility_of_element_located((By.XPATH, self.lo_err)))
-                return self.driver.find_element(By.XPATH, self.lo_err).text
+                wrapper.wait_for_element('xpath', self.lo_err)
+                return wrapper.get_text('xpath', self.lo_err)
 
         except Exception as e:
             self.logs.error_log(f'用例执行失败，原因：{e}')
 
         finally:
-            self.driver.quit()
+            wrapper.quit_browser()
 
 class sign_in_tes:
     def __init__(self, driver):
         self.driver = driver
-        self.logs = log.log_message()
+        self.logs = log.LogMessage()
         self.load_data()
 
     def load_data(self):
+        path = os.getcwd()
         with open(os.path.join(path, "data", "page_data.yaml"), "r", encoding="utf-8") as file:
             self.data = yaml.safe_load(file)['sign_in']
             self.zhu_url = self.data.get('url')
-            self.zhu = self.data.get('zhuc')
+            self.zhu = self.data.get('zhuce')
             self.zhu_user = self.data.get('username')
             self.zhu_pwd = self.data.get('password')
             self.zhu_qpwd = self.data.get('querenpass')
@@ -73,120 +70,106 @@ class sign_in_tes:
 
     def sign_in(self, suc, name, password, password1, shouji, email):
         try:
-            self.driver.get(self.zhu_url)
-            self.driver.find_element(By.LINK_TEXT, self.zhu).click()
-            WebDriverWait(self.driver, 10).until(
-                EC.visibility_of_element_located((By.CLASS_NAME, self.zhu_user)))
-            self.driver.find_element(By.CLASS_NAME, self.zhu_user).clear()
-            self.driver.find_element(By.CLASS_NAME, self.zhu_user).send_keys(name)
-            self.driver.find_element(By.CLASS_NAME, self.zhu_pwd).clear()
-            self.driver.find_element(By.CLASS_NAME, self.zhu_pwd).send_keys(password)
-            self.driver.find_element(By.CLASS_NAME, self.zhu_qpwd).clear()
-            self.driver.find_element(By.CLASS_NAME, self.zhu_qpwd).send_keys(password1)
-            self.driver.find_element(By.CLASS_NAME, self.zhu_shouji).clear()
-            self.driver.find_element(By.CLASS_NAME, self.zhu_shouji).send_keys(shouji)
-            self.driver.find_element(By.CLASS_NAME, self.zhu_email).clear()
-            self.driver.find_element(By.CLASS_NAME, self.zhu_email).send_keys(email)
-            self.driver.find_element(By.CLASS_NAME, self.zhu_butn).click()
+            wrapper = WebDriverWrapper(self.driver)
+            wrapper.open_url(self.zhu_url)
+            wrapper.click_link_text(self.zhu)
+            wrapper.wait_for_element('class', self.zhu_user)
+            wrapper.send_keys_to_element('class', self.zhu_user, name)
+            wrapper.send_keys_to_element('class', self.zhu_pwd, password)
+            wrapper.send_keys_to_element('class', self.zhu_qpwd, password1)
+            wrapper.send_keys_to_element('class', self.zhu_shouji, shouji)
+            wrapper.send_keys_to_element('class', self.zhu_email, email)
+            wrapper.click_element('class', self.zhu_butn)
 
-            if suc == "1":
-                WebDriverWait(self.driver, 10).until(
-                    EC.visibility_of_element_located((By.ID, self.zhu_suc)))
-                return self.driver.find_element(By.ID, self.zhu_suc).text
+            if suc == '1':
+                wrapper.wait_for_element('id', self.zhu_suc)
+                return wrapper.get_text('id', self.zhu_suc)
             elif suc == '0':
-                WebDriverWait(self.driver, 10).until(
-                    EC.visibility_of_element_located((By.XPATH, self.zhu_err)))
-                return self.driver.find_element(By.XPATH, self.zhu_err).text
+                wrapper.wait_for_element('xpath', self.zhu_err)
+                return wrapper.get_text('xpath', self.zhu_err)
 
         except Exception as e:
             self.logs.error_log(f'用例执行失败，原因：{e}')
 
         finally:
-            self.driver.quit()
+            wrapper.quit_browser()
+
 
 class Retrieve_tes:
     def __init__(self, driver):
         self.driver = driver
-        self.logs = log.log_message()
+        self.logs = log.LogMessage()
         self.load_data()
 
     def load_data(self):
+        path = os.getcwd()
         with open(os.path.join(path, "data", "page_data.yaml"), "r", encoding="utf-8") as file:
             self.data = yaml.safe_load(file)['zhaohui']
             self.zhao_url = self.data.get('url')
             self.zhao_username = self.data.get('username')
+            self.zhao_email = self.data.get('youxiang')
             self.zhao_btn = self.data.get('zhaohui_btn')
             self.zhao_err = self.data.get('zhaohui_err')
             self.zhao_suc = self.data.get('zhaohui_suc')
 
     def zhaohui(self, suc, name, email):
         try:
-            self.driver.get(self.zhao_url)
-            self.driver.find_element(By.CSS_SELECTOR, self.zhao_username).clear()
-            self.driver.find_element(By.CSS_SELECTOR, self.zhao_username).send_keys(name)
-            self.driver.find_element(By.CSS_SELECTOR, self.zhao_email).clear()
-            self.driver.find_element(By.CSS_SELECTOR, self.zhao_email).send_keys(email)
-            self.driver.find_element(By.CSS_SELECTOR, self.zhao_btn).click()
+            wrapper = WebDriverWrapper(self.driver)
+            wrapper.open_url(self.zhao_url)
+            wrapper.send_keys_to_element('css', self.zhao_username, name)
+            wrapper.send_keys_to_element('css', self.zhao_email, email)
+            wrapper.click_element('css', self.zhao_btn)
 
             if suc == '1':
-                WebDriverWait(self.driver, 10).until(
-                    EC.visibility_of_element_located((By.CSS_SELECTOR, self.zhao_suc)))
-                return self.driver.find_element(By.CSS_SELECTOR, self.zhao_suc).text
-            elif suc == "0":
-                WebDriverWait(self.driver, 10).until(
-                    EC.visibility_of_element_located((By.XPATH, self.zhao_err)))
-                return self.driver.find_element(By.XPATH, self.zhao_err).text
+                wrapper.wait_for_element('css', self.zhao_suc)
+                return wrapper.get_text('css', self.zhao_suc)
+            elif suc == '0':
+                wrapper.wait_for_element('xpath', self.zhao_err)
+                return wrapper.get_text('xpath', self.zhao_err)
 
         except Exception as e:
             self.logs.error_log(f'用例执行失败，原因：{e}')
 
         finally:
-            self.driver.quit()
+            wrapper.quit_browser()
 
-class Reset_tes:
+
+class ChangePwd_tes:
     def __init__(self, driver):
         self.driver = driver
-        self.logs = log.log_message()
+        self.logs = log.LogMessage()
         self.load_data()
 
     def load_data(self):
+        path = os.getcwd()
         with open(os.path.join(path, "data", "page_data.yaml"), "r", encoding="utf-8") as file:
-            self.data = yaml.safe_load(file)['reset_pwd']
-            self.reset_url = self.data.get('url')
-            self.reset_email = self.data.get('email')
-            self.reset_yan = self.data.get('yanzheng')
-            self.reset_password = self.data.get('password')
-            self.reset_passwordque = self.data.get('chongzhipassword')
-            self.reset_btn = self.data.get('reset_btn')
-            self.reset_error = self.data.get('reset_error')
-            self.reset_suc = self.data.get('reset_suc')
+            self.data = yaml.safe_load(file)['change_pwd']
+            self.change_url = self.data.get('url')
+            self.current_pwd = self.data.get('current_pwd')
+            self.new_pwd = self.data.get('new_pwd')
+            self.confirm_pwd = self.data.get('confirm_pwd')
+            self.change_btn = self.data.get('change_btn')
+            self.change_error = self.data.get('change_error')
+            self.change_suc = self.data.get('change_suc')
 
-    def reset(self, suc, yan, email, password, chongzhipassword):
+    def change_password(self, suc, current_pwd, new_pwd, confirm_pwd):
         try:
-            self.driver.get(self.reset_url)
-            self.driver.find_element(By.CSS_SELECTOR, self.reset_email).clear()
-            self.driver.find_element(By.CSS_SELECTOR, self.reset_email).send_keys(email)
-            self.driver.find_element(By.CSS_SELECTOR, self.reset_yan).clear()
-            self.driver.find_element(By.CSS_SELECTOR, self.reset_yan).send_keys(yan)
-            self.driver.find_element(By.CSS_SELECTOR, self.reset_password).clear()
-            self.driver.find_element(By.CSS_SELECTOR, self.reset_password).send_keys(password)
-            self.driver.find_element(By.CSS_SELECTOR, self.reset_passwordque).clear()
-            self.driver.find_element(By.CSS_SELECTOR, self.reset_passwordque).send_keys(chongzhipassword)
-            self.driver.find_element(By.CSS_SELECTOR, self.reset_btn).click()
+            wrapper = WebDriverWrapper(self.driver)
+            wrapper.open_url(self.change_url)
+            wrapper.send_keys_to_element('css', self.current_pwd, current_pwd)
+            wrapper.send_keys_to_element('css', self.new_pwd, new_pwd)
+            wrapper.send_keys_to_element('css', self.confirm_pwd, confirm_pwd)
+            wrapper.click_element('css', self.change_btn)
 
-            if suc == "1":
-                WebDriverWait(self.driver, 10).until(
-                    EC.visibility_of_element_located((By.ID, self.reset_suc)))
-                return self.driver.find_element(By.ID, self.reset_suc).text
+            if suc == '1':
+                wrapper.wait_for_element('id', self.change_suc)
+                return wrapper.get_text('id', self.change_suc)
             elif suc == '0':
-                WebDriverWait(self.driver, 10).until(
-                    EC.visibility_of_element_located((By.XPATH, self.reset_error)))
-                return self.driver.find_element(By.XPATH, self.reset_error).text
+                wrapper.wait_for_element('xpath', self.change_error)
+                return wrapper.get_text('xpath', self.change_error)
 
         except Exception as e:
             self.logs.error_log(f'用例执行失败，原因：{e}')
 
         finally:
-            self.driver.quit()
-
-
+            wrapper.quit_browser()

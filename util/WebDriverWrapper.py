@@ -12,12 +12,8 @@ class WebDriverWrapper:
             self.driver = webdriver.Ie()
         elif browser.lower() in ['chrome', 'ch']:
             self.driver = webdriver.Chrome()
-        elif browser.lower() in ['phantomjs', 'ph']:
-            self.driver = webdriver.PhantomJS()
         elif browser.lower() in ['edge', 'ed']:
             self.driver = webdriver.Edge()
-        elif browser.lower() in ['opera', 'op']:
-            self.driver = webdriver.Opera()
         elif browser.lower() in ['safari', 'sa']:
             self.driver = webdriver.Safari()
         else:
