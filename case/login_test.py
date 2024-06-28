@@ -18,7 +18,7 @@ casedata = fetch_test_cases(case_path, 3)
 @ddt.ddt
 class Testlogin(unittest.TestCase):
     def setUp(self):
-        self.logs = log.log_message()
+        self.logs = log.LogMessage()
         self.derve = webdriver.Firefox()
         self.login_fun = Login_tes(self.derve)
 

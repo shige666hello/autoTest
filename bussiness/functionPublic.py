@@ -10,7 +10,7 @@ path = os.getcwd()
 class Login_tes:
     def __init__(self, driver):
         self.driver = driver
-        self.logs = log.log_message()
+        self.logs = log.LogMessage()
         self.load_data()
 
     def load_data(self):
